@@ -5,6 +5,7 @@ let tableHrsEl = $('.tableHrs')
 let currentTime = dayjs().format('H')
 let workHrsNumber = $('.tableHrs').children().length
 let saveBtn = $('.saveBtn')
+let savedTasks = []
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -13,18 +14,42 @@ let saveBtn = $('.saveBtn')
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
+  // CHECK previous saved tasks in Local Storage //
+let tasksFromLocalStorage = JSON.parse(localStorage.getItem("savedTasks"))
+if (tasksFromLocalStorage) {
+  savedTasks = tasksFromLocalStorage
+  console.log(savedTasks)
+  // UPDATE saved tasks in the table
+  for (let i=0; i<savedTasks.length; i++) {
+    $('.tableHrs').find('#' + savedTasks[i].time).children('textarea').text(savedTasks[i].task)
+  }
+}
+
+
 
 function saveContent(event){
-  event.preventDefault()
+  // event.preventDefault()
   let btnClicked = $(event.target)
-  let idSaveItem = btnClicked.parent('div').attr('id')
-
-  let taskEntered = ($('.tableHrs').find('#' + idSaveItem)).children('textarea').val()
- 
-  console.log(btnClicked)
+  // Check idSaveItem not loading all the time
+  let idSaveItem = btnClicked.parent().parent().attr('id')
+  let taskEntered = ($('.tableHrs').find('#' + idSaveItem)).children('textarea').val()  
+  console.log('element clicked' , btnClicked)
   console.log(taskEntered)
   console.log(idSaveItem)
-  // if ($())
+
+  if (taskEntered===" ") {
+    console.log('no task entered')
+    // alert('No task added')
+    return
+  } else {
+    let newTask = {
+      time: idSaveItem,
+      task: taskEntered
+    }
+    console.log(newTask)
+    savedTasks.push(newTask)
+    localStorage.setItem("savedTasks", JSON.stringify(savedTasks))
+  } 
 }
 
 tableHrsEl.on('click', '.saveBtn', saveContent)
