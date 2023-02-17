@@ -16,7 +16,7 @@ let tasksFromLocalStorage = JSON.parse(localStorage.getItem("savedTasks"))
 if (tasksFromLocalStorage) {
   savedTasks = tasksFromLocalStorage
   console.log(savedTasks)
-  // UPDATE saved tasks in the table
+        // UPDATE saved tasks in the table
   for (let i=0; i<savedTasks.length; i++) {
     $('.tableHrs').find('#' + savedTasks[i].time).children('textarea').text(savedTasks[i].task)
   }
@@ -31,28 +31,20 @@ function saveContent(event){
   console.log('element clicked' , btnClicked)
   console.log(taskEntered)
   console.log(idSaveItem)
-
-  // if (taskEntered===" ") {
-  //   console.log('no task entered')
-  //   // alert('No task added')
-  //   return
-  // } else {
-    let newTask = { 
+  let newTask = { 
       time: idSaveItem,
       task: taskEntered
-    }
-    console.log(newTask)
-    savedTasks.push(newTask)
-    localStorage.setItem("savedTasks", JSON.stringify(savedTasks))
-    // DISPLAY Task saved message for 3 seconds
-    tableHrsEl.prepend('<p> Appointment added to <span> localStorage &#10004 </span></p>')
-    tableHrsEl.children('p').attr('class','taskMessage')
-    let messageTimer = setTimeout(function() {
-      tableHrsEl.children('p').remove()
-    }, 2000)
-    
+  }
+  console.log(newTask)
+  savedTasks.push(newTask)
+  localStorage.setItem("savedTasks", JSON.stringify(savedTasks))
+    // DISPLAY Task saved message for 2 seconds
+  tableHrsEl.prepend('<p> Appointment added to <span> localStorage &#10004 </span></p>')
+  tableHrsEl.children('p').attr('class','taskMessage')
+  let messageTimer = setTimeout(function() {
+    tableHrsEl.children('p').remove()
+  }, 2000)  
 } 
-// }
 
 // CLEAR my day function
 function clearContent(){
@@ -61,10 +53,7 @@ function clearContent(){
   window.location.reload()
 }  
 
-// let currentTime = 16
-console.log(currentTime) 
-console.log(workHrsNumber)
-// ADD Class to color code the table - past, present, future //
+// COLOR code the table - past, present, future //
 for (let i= 0; i<workHrsNumber; i++) {
   let idNumber = parseInt($('.tableHrs').children().eq(i).attr('id'))
   // console.log(idNumber)
