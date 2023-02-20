@@ -11,8 +11,7 @@ N/A
 
 ## Usage
 
-**Website link: (https://anabel-espinoza.github.io/
-WorkDay-Scheduler/)**
+**Website link: (https://anabel-espinoza.github.io/WorkDay-Scheduler/)**
 
 1. The website shows current date at the top of the page. 
 2. The table displays input area for each workhour. Gray rows indicate past events, the red row indicates the current hour, and the green rows are the future events.
