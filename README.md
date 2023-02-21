@@ -13,14 +13,14 @@ N/A
 
 **Website link: (https://anabel-espinoza.github.io/WorkDay-Scheduler/)**
 
-1. The website shows current date at the top of the page. 
+1. The website shows current date and time at the top of the page. 
 2. The table displays input area for each workhour. Gray rows indicate past events, the red row indicates the current hour, and the green rows are the future events.
-3. The user can type their event at the desired hour and click the save icon at the right of the row. A temporary message at the top of the table indicates the task has been saved. 
+3. The user can type their event at the desired hour and click the save icon on the right of the row. A temporary message at the top of the table indicates the task has been saved. 
 4. The events are saved and will be available everytime the browser is loaded. 
-5. The green Clear my Day button at the top of the page, deletes all saved inputs for the day.
+5. The Clear my Day button at the top of the page, deletes all saved inputs for the day.
 
 The website looks like the following image ():
-![WorkDay-Scheduler screenshot](./assets/Images/Scheduler.png)
+![WorkDay-Scheduler screenshot](./Assets/images/workday-scheduler.png)
 
 
 ## Credits

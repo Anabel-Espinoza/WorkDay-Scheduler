@@ -45,17 +45,17 @@ $(document).ready(function() {
     }, 2000)  
   } 
 
-  // CLEAR my day function
+    // CLEAR my day function
   function clearContent() {
     console.log('clicked')
     localStorage.clear()
     window.location.reload()
   }  
 
-  // COLOR code the table - past, present, future //
+    // COLOR code the table - past, present, future //
   for (let i= 0; i<workHrsNumber; i++) {
     let idNumber = parseInt($('.tableHrs').children().eq(i).attr('id'))
-    // console.log(idNumber)
+    console.log(idNumber)
       if (currentTime > idNumber) {
         $('.tableHrs').children().eq(i).addClass('past')
       } else if (currentTime < idNumber){
@@ -67,19 +67,20 @@ $(document).ready(function() {
 
     // DISPLAY the current date in the header of the page.
   function ordinalDate(day) {
-    if(day === 1 || day === 11 || day === 21 || day === 31) {
+    if(day == 1 || day == 11 || day == 21 || day === 31) {
       return 'st'
-    } else if (day === 2 || day === 12 || day === 22) {
+    } else if (day == 2 || day == 12 || day == 22) {
       return 'nd'
-    } else if (day === 3 || day === 13 || day === 23) {
+    } else if (day == 3 || day == 13 || day == 23) {
       return 'rd'
     } else {
       return 'th'
     }
   }
   let ordinalEnd = (ordinalDate(today.format('DD')))
+  console.log(today.format('DD'))
   console.log(ordinalEnd)
-  // UPDATE clock in header
+    // UPDATE clock in header
   function headerTime() {
     today = dayjs()
     currentDate.text(today.format('dddd, MMMM DD') + ordinalEnd + ' at ' + today.format('h:mm:ss a'))   
