@@ -27,7 +27,6 @@ $(document).ready(function() {
     let btnClicked = $(event.target)
     let idSaveItem = btnClicked.parent().parent().attr('id')
     let taskEntered = ($('.tableHrs').find('#' + idSaveItem)).children('textarea').val()  
-    console.log('element clicked' , btnClicked)
     console.log(taskEntered)
     console.log(idSaveItem)
     let newTask = { 
@@ -67,19 +66,22 @@ $(document).ready(function() {
 
     // DISPLAY the current date in the header of the page.
   function ordinalDate(day) {
-    if(day == 1 || day == 11 || day == 21 || day === 31) {
+    if(day == 1 || day == 21 || day === 31) {
       return 'st'
-    } else if (day == 2 || day == 12 || day == 22) {
+    } else if (day == 2 || day == 22) {
       return 'nd'
-    } else if (day == 3 || day == 13 || day == 23) {
+    } else if (day == 3 || day == 23) {
       return 'rd'
     } else {
       return 'th'
     }
   }
-  let ordinalEnd = (ordinalDate(today.format('DD')))
-  console.log(today.format('DD'))
+  
+  let ordinalEnd = ordinalDate(today.format('DD'))
+  console.log(typeof (today.format('DD')))
   console.log(ordinalEnd)
+  currentDate.text(today.format('dddd, MMMM DD') + ordinalEnd + ' at ' + today.format('h:mm:ss a'))   
+
     // UPDATE clock in header
   function headerTime() {
     today = dayjs()
